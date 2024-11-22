@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .main-div {
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            margin: auto;
+            margin-top: 50px;
+            padding-left: 50px;
+            padding-top: 20px;
+            padding-right: 50px;
+        }
+        p {
+            width: 20px;
+            height: 25px;
+            border: 1px black solid;
+            border-radius: 2px;
+        }
+        .svg {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .svg2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        input{
+            width: 250px;
+            height: 20px;
+            outline: none;
+        }
+        .label-1 {
+            display: flex;
+            flex-direction: column;
+        }
+        .inp {
+            width: 280px;
+        }
+        form {
+            padding-bottom: 25px;
+        }
+        button {
+            margin-left: 170px;
+            background-color: white;
+            border: 1px black solid;
+        }
+        select {
+            outline: none;
+            padding: 6px;
+            width: 280px;
+        }
+        #display {
+            visibility: hidden;
+            background-color: aquamarine;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        @keyframes displayanimine {
+            form {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #display.animate {
+            visibility: visible;
+            animation: displayanimine 3s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <h3>Tip Calculator</h3>
+        <hr>
+        <form action="##" method="post">
+            <label for="text">Bill Amount</label>
+            <div class="svg">
+                <p><svg fill="#000000" width="18px" height="18px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M541.7 768v-45.3c46.3-2.4 81.5-15 108.7-37.8 27.2-22.8 40.8-53.1 40.8-88.2 0-37.8-11-65.7-35.3-83.4-24.6-20.1-59.8-35.4-111.6-45.3h-2.6V351.8c35.3 5.1 65.3 15 95.1 35.4l43.6-55.5c-43.6-27.9-89.9-42.9-138.8-45.3V256h-40.8v30.3c-40.8 2.4-76.3 15-103.5 37.8-27.2 22.8-40.8 53.1-40.8 88.2s11 63 35.3 80.7c21.7 17.7 59.8 32.7 108.7 42.9v118.5c-38.2-5.1-76.3-22.8-114.2-53.1l-48.9 53.1c48.9 40.5 103.5 63 163.3 68.1V768h41zm2.6-219.6c27.2 7.5 43.6 15 54.4 22.8 8.1 10.2 13.6 20.1 13.6 35.4s-5.5 25.2-19.1 35.4c-13.6 10.2-30.1 15-48.9 17.7V548.4zM449.2 440c-8.1-7.5-13.6-20.1-13.6-32.7 0-15 5.5-25.2 16.2-35.4 13.6-10.2 27.2-15 48.9-17.7v108.6c-27.2-7.8-43.4-15.3-51.5-22.8z"></path></g></svg></p>
+                <input id="amountInput" type="number" value="">
+            </div>
+            <label for="">Number of Guests</label>
+            <div class="svg2">
+                <p><svg height="18px" width="18px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 53.355 53.355" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <circle style="fill:#010002;" cx="26.677" cy="4.383" r="4.383"></circle> <path style="fill:#010002;" d="M40.201,28.096c-1.236-13.887-7.854-16.657-7.854-16.657s-6.396-3.845-13.129,1.052 c-4.365,3.973-5.373,10.038-6.063,15.896c-0.349,2.977,4.307,2.941,4.653,0c0.412-3.496,1-7.008,2.735-9.999l-0.008,3.375 l-0.032,16.219v12.867c0,1.383,1.014,2.506,2.438,2.506c1.423,0,2.578-1.123,2.578-2.506V32.457h2.278c0,4.309,0,14.144,0,18.451 c0,3,4.652,3,4.652,0c0-4.309,0-8.619,0-12.927l0.197-16.251c0.002-1.551,0.004-2.937,0.004-3.901 c1.859,3.046,2.473,6.664,2.896,10.265C35.895,31.037,40.55,31.073,40.201,28.096z"></path> </g> </g> </g></svg></p>
+                <input id="serviceup" type="number" value="">
+            </div>
+            <div class="label-1">
+                <label for="">Service Quality</label>
+                <br>
+                <select name="service" id="selection">
+                    <option value="none">Choose...</option>
+                    <option value="0.3">30% - Outstanding</option>
+                    <option value="0.2">20% - Good</option>
+                    <option value="0.15">15%  - It was ok</option>
+                    <option value="0.10">10% - Bad</option>
+                    <option value="0.05">5% - Terrible</option>
+                </select>
+            </div>
+        </form>
+        <hr>
+        <button onclick="Amountdetails()" type="button">Calculate</button>
+    </div>
+    <div id="display"></div>
+    <script>
+        var tip;
+        function Amountdetails() {
+            var amount = document.getElementById('amountInput').value;
+            var guests = document.getElementById('serviceup').value;
+            var selectors = document.getElementById('selection').value;
+            tip = ((amount * selectors) / (guests)).toFixed(2);
+            displayResult();
+        } 
+        function displayResult() {
+            var display = document.getElementById('display');
+            display.className = "animate";
+            display.innerText = tip;
+        }
+    </script>
+</body>
+</html>

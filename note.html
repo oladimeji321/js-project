@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: burlywood;
+        }
+        #notebtn {
+            padding: 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            margin-left: 20px;
+        }
+        #firstdiv {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 40%;
+            margin: auto;
+            margin-top: 50px;
+            z-index: 2;
+            visibility: hidden;
+        }
+        #svgbtn {
+            position: absolute;
+            right: 0;
+            padding: 10px;
+        }
+        textarea {
+            margin-top: 33px;
+            resize: none;
+            outline: none;
+            text-align: center;
+            padding: 25px;
+            border: none;
+        }
+        #flashcard {
+            width: 200px;
+            height: 200px;
+            padding: 15px;
+            box-shadow: 5px 5px 10px;
+            /* background-color: rgb(142, 162, 180); */
+            margin: 25px;
+            /* transform: rotateZ(-10deg); */
+        }
+        #flashcard:hover {
+            transform: scale(1.1);
+        }
+        #flashcard-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="Createcard()" id="notebtn" type="button">Create Note</button>
+    <div id="firstdiv">
+        <div id="svgbtn">
+            <svg onclick="addFlashCrd()" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="1.5"></circle> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <svg onclick="closenote()" fill="#000000" width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"></path> </g> </g></svg>
+        </div>
+        <textarea name="text" id="input-text" rows="15"></textarea>
+    </div>
+    <div id="flashcard-container"></div>
+    <script>
+        function Createcard() {
+            var firstDiv =  document.getElementById('firstdiv').style;
+            if (firstDiv.visibility == 'hidden') {
+                firstDiv.visibility = 'visible';
+            } else {
+                firstDiv.visibility = 'visible';
+            }
+        }
+        function closenote() {
+            var firstDiv =  document.getElementById('firstdiv').style;
+            if (firstDiv.visibility == 'visible') {
+                firstDiv.visibility = 'hidden';
+            } else {
+                firstDiv.visibility = 'hidden';
+            }
+        }
+        var colors = ['green', 'yellow', 'blue', 'red', 'orange']
+        var degrees = [-10, -5, 4, -7, 7, 0]
+        function addFlashCrd() {
+            var cardinput = document.getElementById('input-text').value;
+            
+            const newP = document.createElement('p');
+            newP.id = 'flashcard';
+
+            // newP.addEventListener('mouseover', () => {
+            //     newP.style.transform = 'scale(1.1)'
+            // })
+
+            // newP.addEventListener('mouseout', () => {
+            //     newP.style.transform = 'scale(1)'
+            // })
+
+            newP.addEventListener('click', () => {
+                newP.remove();
+            })
+            newP.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
+            var rotateValue = degrees[Math.floor(Math.random() * degrees.length)]
+            console.log(rotateValue);
+            newP.style.transform = `rotateZ(${rotateValue}deg)`;
+            newP.innerText = cardinput;
+
+            document.getElementById('flashcard-container').appendChild(newP);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: linear-gradient(to right,red , blue);
+        }
+        .main-div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .second-div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .second-div > h3 {
+            color: white;
+        }
+        #third-div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 270px;
+            margin: auto;
+        }
+        #div3 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px;
+            padding: 3px;
+            background-color: white;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        #buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <div class="second-div">
+            <svg width="24px" height="24px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs><circle class="a" cx="32.5" cy="11" r="2.5"></circle><circle class="a" cx="15.5" cy="11" r="2.5"></circle><path class="a" d="M7.5,5.5a2,2,0,0,0-2,2v33a2,2,0,0,0,2,2h33a2,2,0,0,0,2-2V7.5a2,2,0,0,0-2-2Z"></path><polyline class="a" points="15.254 29.609 20.679 35.033 34.746 20.967"></polyline></g></svg>
+            <h3>To-do List</h3>
+        </div>
+        <div>
+            <input id="inputbtn" type="text" value="">
+            <button onclick="submitBtn()" type="button">submit</button>
+        </div>
+    </div>
+    <div id="third-div"></div>
+    <script>
+        function submitBtn() {
+            var inputDetails = document.getElementById('inputbtn').value;
+
+            const div3 = document.createElement('div');
+            const buttonsDiv = document.createElement('div');
+            const newp = document.createElement('p');
+            const check = document.createElement('input');
+            const deleteBtn = document.createElement('img');
+
+            check.type = 'checkbox';
+            div3.id = 'div3';
+            buttonsDiv.id = 'buttons';
+            deleteBtn.src = 'delete.svg';
+
+            deleteBtn.addEventListener('click', () => {
+                div3.remove();
+            });
+
+            document.getElementById('third-div').appendChild(div3);
+            div3.appendChild(newp);
+            div3.appendChild(buttonsDiv);
+            buttonsDiv.appendChild(check);
+            buttonsDiv.appendChild(deleteBtn);
+            newp.innerText = inputDetails;
+
+        }
+    </script>
+</body>
+</html>

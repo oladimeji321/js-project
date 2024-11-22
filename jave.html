@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-200px);
+            }
+            on {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        div > img {
+            width: 700px;
+            height: 500px;
+            animation: fadeIn 2s ease-in;
+        }
+        div {
+            width: 700px;
+            margin: auto;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="prev()" type="button">prev</button>
+        <img id="pic-changer" src="./car1.jpeg" alt="images">
+        <button onclick="next()" type="button">next</button>
+    </div>
+    <script>
+        var images = ['car1.jpeg','car2.jpeg','car3.jpeg','car4.jpeg','car6.jpeg']
+        var imgDic = {
+            1: 'car1.jpeg',
+            2: 'car2.jpeg',
+            3: 'car3.jpeg',
+            4: 'car4.jpeg',
+            5: 'car6.jpeg'
+        }
+        var currentimage = 1;
+        function prev() {
+            if (currentimage > 1) {
+                currentimage -= 1;
+                document.getElementById('pic-changer').src = imgDic[currentimage];
+            }
+        }
+        function next() {
+            if (currentimage < images.length) {
+                currentimage += 1
+                document.getElementById('pic-changer').src = imgDic[currentimage];
+            }
+        }
+    </script>
+</body>
+</html>

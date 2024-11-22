@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: blue;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            margin: auto;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body id="backgd">
+    <button onclick="changeColor()" type="button">Clink on</button>
+    <script>
+        function changeColor(){
+            var color = ['red','yellow','green','black'];
+            var currentColor = color[Math.floor(Math.random()*color.length)];
+            document.getElementById('backgd').style.backgroundColor = currentColor;
+        }
+    </script>
+</body>
+</html>

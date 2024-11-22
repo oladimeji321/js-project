@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px;
+        }
+
+        div>button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px red solid;
+        }
+
+        body {
+            background-color: rgb(231, 229, 229);
+        }
+
+        .first-div {
+            width: 400px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding-left: 30px;
+            padding-right: 30px;
+            gap: 10px;
+            margin: auto;
+            margin-top: 15px;
+            box-shadow: 2px 2px 5px;
+            padding-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form>input {
+            border-radius: 5px;
+            padding: 10PX;
+            outline: none;
+            border: none;
+        }
+
+        #flashcontainer {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 90vw;
+            margin: auto;
+            margin-top: 30px;
+            align-items: center;
+            align-content: center;
+        }
+
+        #flashcard {
+            width: 350px;
+            height: 250px;
+            text-align: center;
+            box-shadow: 2px 2px 5px;
+            margin: auto;
+        }
+
+        h2,
+        p {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-div">
+        <h1>Flashcards</h1>
+        <div>
+            <button onclick="openCard()" type="button">Add card</button>
+            <button onclick="delCard()" type="button">Del card</button>
+        </div>
+    </div>
+    <div id="creatediv" class="first-div">
+        <h3>Create Flashcards</h3>
+        <form action="">
+            <label for="">Question</label>
+            <input id="questioninput" type="text" value="">
+            <label for="">Answer</label>
+            <input id="answerinput" type="text" value="">
+        </form>
+        <div>
+            <button onclick="saveCard()" type="button">Save</button>
+            <button onclick="closeCard()" type="button">Close</button>
+        </div>
+    </div>
+    <div id="flashcontainer">
+        <!-- <div id="flashcard" onclick="showcard()">
+            <h2 id="question">what is your name?</h2>
+            <hr>
+            <p id="answer">marvellous</p>
+        </div> -->
+    </div>
+    <script>
+        var currentEntries = JSON.parse(localStorage.getItem('cards'));
+        if (!(currentEntries == null)) {
+            currentEntries.forEach(element => {
+                const newFlashcard = document.createElement('div');
+                const cardQuestion = document.createElement('h2');
+                const cardAnswer = document.createElement('p');
+                const cardHr = document.createElement('hr');
+                
+                newFlashcard.id = "flashcard";
+                cardQuestion.id = "question";
+                cardAnswer.id = "answer";
+                
+                document.getElementById('flashcontainer').appendChild(newFlashcard);
+
+                newFlashcard.appendChild(cardQuestion);
+                newFlashcard.appendChild(cardHr);
+                newFlashcard.appendChild(cardAnswer);
+
+                cardQuestion.innerText = element.question;
+                cardAnswer.innerText = element.answer;
+            });
+        }
+        function openCard() {
+            document.getElementById('creatediv').style.visibility = 'visible';
+        }
+        function closeCard() {
+            document.getElementById('creatediv').style.visibility = 'hidden';
+        }
+
+        function saveCard() {
+            var question = document.getElementById('questioninput').value;
+            var answer = document.getElementById('answerinput').value;
+
+            var QandA = JSON.parse(localStorage.getItem('cards'));
+            if (QandA == null) {
+                QandA = []
+            }
+
+            let QandAarray = {
+                'question': question,
+                'answer': answer
+            }
+
+            QandA.push(QandAarray);
+            localStorage.setItem('cards', JSON.stringify(QandA));
+
+            const newFlashcard = document.createElement('div');
+            const cardQuestion = document.createElement('h2');
+            const cardAnswer = document.createElement('p');
+            const cardHr = document.createElement('hr');
+            
+            newFlashcard.id = "flashcard";
+            cardQuestion.id = "question";
+            cardAnswer.id = "answer";
+            
+            document.getElementById('flashcontainer').appendChild(newFlashcard);
+
+            newFlashcard.appendChild(cardQuestion);
+            newFlashcard.appendChild(cardHr);
+            newFlashcard.appendChild(cardAnswer);
+
+            cardQuestion.innerText = question;
+            cardAnswer.innerText = answer;
+        }
+        function showcard() {
+            var answerp = document.getElementById('answer').style;
+
+            if (answerp.visibility == 'hidden') {
+                answerp.visibility = 'visible';
+            } else if (answerp.visibility == 'visible') {
+                answerp.visibility = 'hidden';
+            } else {
+                answerp.visibility = 'hidden';
+            }
+        }
+        function delCard() {
+            localStorage.clear();
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
